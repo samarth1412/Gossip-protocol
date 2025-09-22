@@ -3,7 +3,7 @@
 A Gleam implementation of gossip and push-sum algorithms for distributed systems simulation.
 
 ## Team Members
-- [Your Name]
+- Samarth (samarth1412)
 
 ## What is Working
 
