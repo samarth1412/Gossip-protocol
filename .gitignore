@@ -1,0 +1,26 @@
+# Gleam build artifacts
+/build/
+/target/
+
+# Dependencies
+/deps/
+
+# Gleam lock file
+gleam.lock
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
