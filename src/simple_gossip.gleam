@@ -79,22 +79,36 @@ fn gossip_rounds(nodes: List(Node), round: Int) -> List(Node) {
   case round > 1000 || all_terminated_gossip(nodes) {
     True -> nodes
     False -> {
-      // Each node that has heard rumor spreads it
-      let new_nodes = 
-        nodes
-        |> list.index_map(fn(node, i) {
-          case node.rumor_count > 0 && node.rumor_count < 10 && not_empty(node.neighbors) {
-            True -> {
-              let target = pick_random_neighbor(node.neighbors)
-              spread_rumor_to(nodes, target)
-            }
-            False -> nodes
-          }
-        })
-        |> list.last
-        |> unwrap_or(nodes)
-      
+      // Collect all rumors to spread this round
+      let rumors_to_spread = collect_rumors_to_spread(nodes, [])
+      // Apply all rumors at once
+      let new_nodes = apply_rumors(nodes, rumors_to_spread)
       gossip_rounds(new_nodes, round + 1)
+    }
+  }
+}
+
+fn collect_rumors_to_spread(nodes: List(Node), acc: List(Int)) -> List(Int) {
+  case nodes {
+    [] -> acc
+    [node, ..rest] -> {
+      case node.rumor_count > 0 && node.rumor_count < 10 && not_empty(node.neighbors) {
+        True -> {
+          let target = pick_random_neighbor(node.neighbors)
+          collect_rumors_to_spread(rest, [target, ..acc])
+        }
+        False -> collect_rumors_to_spread(rest, acc)
+      }
+    }
+  }
+}
+
+fn apply_rumors(nodes: List(Node), targets: List(Int)) -> List(Node) {
+  case targets {
+    [] -> nodes
+    [target, ..rest] -> {
+      let updated_nodes = update_node_rumor(nodes, target)
+      apply_rumors(updated_nodes, rest)
     }
   }
 }
@@ -109,26 +123,63 @@ fn push_sum_rounds(nodes: List(Node), round: Int) -> List(Node) {
   case round > 1000 || all_terminated_push_sum(nodes) {
     True -> nodes
     False -> {
-      // Each active node sends half its s,w to a random neighbor
-      let new_nodes = 
-        nodes
-        |> list.index_map(fn(node, i) {
-          case not_terminated_push(node) && not_empty(node.neighbors) {
-            True -> {
-              let target = pick_random_neighbor(node.neighbors)
-              let send_s = node.s /. 2.0
-              let send_w = node.w /. 2.0
-              let updated_sender = Node(..node, s: node.s -. send_s, w: node.w -. send_w)
-              let updated_nodes = update_at(nodes, i, updated_sender)
-              update_node_push(updated_nodes, target, send_s, send_w)
-            }
-            False -> nodes
-          }
-        })
-        |> list.last
-        |> unwrap_or(nodes)
-      
+      // Collect all push messages to send this round
+      let pushes_to_send = collect_pushes_to_send(nodes, [], 0)
+      // Apply all push operations
+      let new_nodes = apply_pushes(nodes, pushes_to_send)
       push_sum_rounds(new_nodes, round + 1)
+    }
+  }
+}
+
+pub type PushMessage {
+  PushMessage(from: Int, to: Int, s: Float, w: Float)
+}
+
+fn collect_pushes_to_send(nodes: List(Node), acc: List(PushMessage), index: Int) -> List(PushMessage) {
+  case nodes {
+    [] -> acc
+    [node, ..rest] -> {
+      case not_terminated_push(node) && not_empty(node.neighbors) {
+        True -> {
+          let target = pick_random_neighbor(node.neighbors)
+          let send_s = node.s /. 2.0
+          let send_w = node.w /. 2.0
+          let push_msg = PushMessage(from: index, to: target, s: send_s, w: send_w)
+          collect_pushes_to_send(rest, [push_msg, ..acc], index + 1)
+        }
+        False -> collect_pushes_to_send(rest, acc, index + 1)
+      }
+    }
+  }
+}
+
+fn apply_pushes(nodes: List(Node), pushes: List(PushMessage)) -> List(Node) {
+  // First, halve all sending nodes' values
+  let updated_nodes = apply_sending_halvings(nodes, pushes, 0)
+  // Then, apply all received values
+  apply_received_values(updated_nodes, pushes)
+}
+
+fn apply_sending_halvings(nodes: List(Node), pushes: List(PushMessage), index: Int) -> List(Node) {
+  case nodes {
+    [] -> []
+    [node, ..rest] -> {
+      let should_halve = list.any(pushes, fn(push) { push.from == index })
+      case should_halve {
+        True -> [Node(..node, s: node.s /. 2.0, w: node.w /. 2.0), ..apply_sending_halvings(rest, pushes, index + 1)]
+        False -> [node, ..apply_sending_halvings(rest, pushes, index + 1)]
+      }
+    }
+  }
+}
+
+fn apply_received_values(nodes: List(Node), pushes: List(PushMessage)) -> List(Node) {
+  case pushes {
+    [] -> nodes
+    [push, ..rest] -> {
+      let updated_nodes = update_node_push(nodes, push.to, push.s, push.w)
+      apply_received_values(updated_nodes, rest)
     }
   }
 }
@@ -192,7 +243,15 @@ fn pick_random_neighbor(neighbors: List(Int)) -> Int {
 }
 
 fn simple_rand(n: Int) -> Int {
-  case n <= 0 { True -> 0 False -> 0 } // Always pick first for simplicity
+  case n <= 0 { 
+    True -> 0 
+    False -> {
+      // Use time-based randomization for better distribution
+      let t = get_monotonic_time()
+      let hash = { t * 1103515245 + 12345 } % 2147483647
+      case hash < 0 { True -> -hash % n False -> hash % n }
+    }
+  }
 }
 
 fn abs_diff(a: Float, b: Float) -> Float {
@@ -217,3 +276,6 @@ fn nth_element_loop(xs: List(Int), idx: Int, i: Int) -> Int {
     [] -> 0
   }
 }
+
+@external(erlang, "erlang", "monotonic_time")
+fn get_monotonic_time() -> Int
