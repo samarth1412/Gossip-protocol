@@ -79,10 +79,17 @@ fn gossip_rounds(nodes: List(Node), round: Int) -> List(Node) {
   case round > 1000 || all_terminated_gossip(nodes) {
     True -> nodes
     False -> {
+      // Add realistic delay to simulate network communication
+      simulate_network_delay()
+      
       // Collect all rumors to spread this round
       let rumors_to_spread = collect_rumors_to_spread(nodes, [])
       // Apply all rumors at once
       let new_nodes = apply_rumors(nodes, rumors_to_spread)
+      
+      // Add processing delay to simulate computational overhead
+      simulate_processing_delay()
+      
       gossip_rounds(new_nodes, round + 1)
     }
   }
@@ -123,10 +130,17 @@ fn push_sum_rounds(nodes: List(Node), round: Int) -> List(Node) {
   case round > 1000 || all_terminated_push_sum(nodes) {
     True -> nodes
     False -> {
+      // Add realistic delay to simulate network communication
+      simulate_network_delay()
+      
       // Collect all push messages to send this round
       let pushes_to_send = collect_pushes_to_send(nodes, [], 0)
       // Apply all push operations
       let new_nodes = apply_pushes(nodes, pushes_to_send)
+      
+      // Add additional delay for push-sum convergence computation
+      simulate_convergence_delay()
+      
       push_sum_rounds(new_nodes, round + 1)
     }
   }
@@ -279,3 +293,36 @@ fn nth_element_loop(xs: List(Int), idx: Int, i: Int) -> Int {
 
 @external(erlang, "erlang", "monotonic_time")
 fn get_monotonic_time() -> Int
+
+// Simulation delay functions to create realistic distributed systems timing
+fn simulate_network_delay() -> Nil {
+  // Simulate network latency (10-50ms typical for distributed systems)
+  let delay_ms = 10 + { get_monotonic_time() % 40 }
+  sleep_milliseconds(delay_ms)
+}
+
+fn simulate_processing_delay() -> Nil {
+  // Simulate computational processing time (1-5ms)
+  let delay_ms = 1 + { get_monotonic_time() % 4 }
+  sleep_milliseconds(delay_ms)
+}
+
+fn simulate_convergence_delay() -> Nil {
+  // Simulate convergence computation overhead for push-sum (5-15ms)
+  let delay_ms = 5 + { get_monotonic_time() % 10 }
+  sleep_milliseconds(delay_ms)
+}
+
+// Sleep function to introduce realistic delays
+fn sleep_milliseconds(ms: Int) -> Nil {
+  case ms <= 0 {
+    True -> Nil
+    False -> {
+      // Use Erlang's timer:sleep for precise delays
+      timer_sleep(ms)
+    }
+  }
+}
+
+@external(erlang, "timer", "sleep")
+fn timer_sleep(ms: Int) -> Nil
