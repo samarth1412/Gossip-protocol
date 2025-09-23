@@ -48,6 +48,18 @@ For each algorithm, we plot the convergence time as a function of network size f
 - Among all topologies, the line topology consistently achieves the fastest convergence, while the 3D grid and imperfect 3D topologies show much slower convergence, especially at larger network sizes.
 - The full network topology starts with relatively low convergence times for small networks but does not maintain this advantage as the network grows, suggesting diminishing returns with increased connectivity.
 
+
+## Largest Network Size Managed
+
+The largest network size successfully managed for each topology and algorithm is as follows:
+
+| Algorithm  | Full Network  | Line Topology | 3D Grid | Imperfect 3D |
+|------------|---------------|---------------|---------|--------------|
+| Gossip     |  2500         |  3000         | 3000    | 3000         |
+| Push-Sum   |  10000        |  10000        | 10000   | 10000        |
+
+*Note: For Push-Sum, the implementation was able to handle up to 10000 nodes, while for Gossip the maximum tested was 3000 nodes.*
+
 ## Key Findings
 
 - **Dependency on Topology:** The convergence time increases with network size for all topologies, but the rate of increase varies.
