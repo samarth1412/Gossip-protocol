@@ -28,7 +28,7 @@ fn run_actor_model(num_nodes_s: String, topo_s: String, algo_s: String) -> Nil {
   // Start timing
   time_util.start_counters()
   
-  // Start the boss actor
+  // Start boss actor
   let assert Ok(actor.Started(data: boss_subject, ..)) = boss.start()
   
   // Create a reply subject for the boss to respond to
