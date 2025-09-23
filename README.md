@@ -62,12 +62,15 @@ The largest network size successfully managed for each topology and algorithm is
 
 ## Key Findings
 
-- **Dependency on Topology:** The convergence time increases with network size for all topologies, but the rate of increase varies.
-- **Line Topology:** Shows the slowest growth in convergence time, often outperforming other topologies, especially as the network scales.
-- **Full Network:** Performs well for smaller sizes but may not scale as efficiently as expected.
-- **3D Grid and Imperfect 3D:** Generally show intermediate performance, with Imperfect 3D sometimes lagging due to random missing connections.
-- **Algorithm Comparison:** Push-Sum typically converges faster than Gossip across all topologies and sizes.
-- **Logarithmic Trends:** In some cases, a logarithmic or sub-linear relationship is observed, especially for the Push-Sum algorithm in certain topologies.
+- The network structure really matters. As the number of nodes grows, convergence slows down, but the effect is different depending on the topology.
+
+- The line topology surprised me by being the most consistent and scaling the best overall, while the full network wasn’t as efficient as I expected when the network got bigger.
+
+- The 3D and imperfect 3D topologies worked, but they tended to slow things down compared to line or full, especially as the system grew.
+
+- Between the two algorithms, Push-Sum clearly converges faster and can handle much larger networks than Gossip.
+
+- The data also suggests that Push-Sum sometimes follows a sub-linear growth pattern, which is why it scales much better in larger setups compared to Gossip.
 
 ## Usage
 
