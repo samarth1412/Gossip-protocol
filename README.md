@@ -18,6 +18,7 @@ The following Gleam packages are used in this project:
 - gleam_erlang: Enables interoperability with Erlang and access to BEAM-specific features.
 - gleeunit: (dev dependency) Used for writing and running tests in Gleam.
 
+
 ## Project Modules Overview
 
 - **project2_gossip.gleam**: Main entry point for running the project and orchestrating the simulation.
@@ -27,6 +28,13 @@ The following Gleam packages are used in this project:
 - simple_gossip.gleam: Contains a simplified or helper implementation of the gossip protocol.
 - time_util.gleam: Provides utility functions for timing and measuring performance.
 - argv.gleam: Handles parsing of command-line arguments for the application.
+
+## What is Working
+
+- Both Gossip and Push-Sum algorithms are fully implemented and can be run on all four topologies (Full Network, Line, 3D Grid, Imperfect 3D).
+- The system successfully simulates large-scale networks, with Push-Sum handling up to 10,000 nodes and Gossip up to 3,000 nodes in some topologies.
+- Convergence time is measured and reported for each run, and results are consistent with expectations for distributed protocols.
+- The codebase is modular, allowing easy extension or modification of algorithms and topologies.
 
 ## Results: Convergence Time vs. Network Size
 
@@ -87,6 +95,14 @@ gleam run -m project2_gossip <nodes> <topology> push-sum
 # Example:
 gleam run -m project2_gossip 100 full gossip
 gleam run -m project2_gossip 60 line push-sum
+
+## What is Working
+
+- Both Gossip and Push-Sum algorithms are fully implemented and can be run on all four topologies (Full Network, Line, 3D Grid, Imperfect 3D).
+- The system successfully simulates large-scale networks, with Push-Sum handling up to 10,000 nodes and Gossip up to 3,000 nodes in some topologies.
+- Convergence time is measured and reported for each run, and results are consistent with expectations for distributed protocols.
+- The codebase is modular, allowing easy extension or modification of algorithms and topologies.
+
 ```
 
 - `<nodes>`: Number of nodes (e.g., 60, 80, 100, 120, 140)
