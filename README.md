@@ -2,83 +2,83 @@
 
 A high-performance implementation of **Gossip** and **Push-Sum** algorithms for distributed systems simulation using the functional programming language **Gleam** on the BEAM virtual machine.
 
-## 📊 **Performance Results - 100% Real Actor Model Data**
+## **Performance Results - 100% Real Actor Model Data**
 
 Our Gleam implementation delivers **authentic distributed systems performance** using genuine Gleam/Erlang actor concurrency. All results below are from **real concurrent execution** on the BEAM virtual machine - no simulation!
 
-### **🔢 Real Push-Sum Algorithm Performance - Authentic Actor Model Results**
+### **Real Push-Sum Algorithm Performance - Authentic Actor Model Results**
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════╗
-║                🔬 AUTHENTIC PUSH-SUM MEASUREMENTS 🔬                   ║
+║                AUTHENTIC PUSH-SUM MEASUREMENTS                   ║
 ║                (Real Gleam/Erlang Actor Execution)                     ║
 ╠═════════════════╦═══════╦══════════════════╦═════════════════════════╣
 ║    Topology     ║ Nodes ║ Convergence Time ║     Execution Type      ║
 ╠═════════════════╬═══════╬══════════════════╬═════════════════════════╣
-║ 🌐 Full Network ║   60  ║      123ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║   80  ║      166ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║  100  ║      194ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║  120  ║      236ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║  140  ║      266ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📏 Line Topology║   60  ║      112ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📏 Line Topology║  140  ║      239ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📦 3D Grid      ║   60  ║      131ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📦 3D Grid      ║  140  ║      322ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🔷 Imperfect 3D ║   60  ║      127ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🔷 Imperfect 3D ║  140  ║      262ms ⏱️   ║ ✅ Real Actor Model     ║
+║ Full Network ║   60  ║      123ms    ║ Real Actor Model     ║
+║ Full Network ║   80  ║      166ms    ║ Real Actor Model     ║
+║ Full Network ║  100  ║      194ms    ║ Real Actor Model     ║
+║ Full Network ║  120  ║      236ms    ║ Real Actor Model     ║
+║ Full Network ║  140  ║      266ms    ║ Real Actor Model     ║
+║ Line Topology║   60  ║      112ms    ║ Real Actor Model     ║
+║ Line Topology║  140  ║      239ms    ║ Real Actor Model     ║
+║ 3D Grid      ║   60  ║      131ms    ║ Real Actor Model     ║
+║ 3D Grid      ║  140  ║      322ms    ║ Real Actor Model     ║
+║ Imperfect 3D ║   60  ║      127ms    ║ Real Actor Model     ║
+║ Imperfect 3D ║  140  ║      262ms    ║ Real Actor Model     ║
 ╚═════════════════╩═══════╩══════════════════╩═════════════════════════╝
 ```
 
-### **💬 Real Gossip Algorithm Performance - Authentic Actor Model Results**
+### **Real Gossip Algorithm Performance - Authentic Actor Model Results**
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════╗
-║                🔬 AUTHENTIC GOSSIP MEASUREMENTS 🔬                     ║
+║                AUTHENTIC GOSSIP MEASUREMENTS                     ║
 ║                (Real Gleam/Erlang Actor Execution)                     ║
 ╠═════════════════╦═══════╦══════════════════╦═════════════════════════╣
 ║    Topology     ║ Nodes ║ Convergence Time ║     Execution Type      ║
 ╠═════════════════╬═══════╬══════════════════╬═════════════════════════╣
-║ 🌐 Full Network ║   60  ║      321ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║   80  ║      380ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║  100  ║      443ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║  120  ║      525ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🌐 Full Network ║  140  ║      528ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📏 Line Topology║   60  ║      181ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📏 Line Topology║  140  ║      465ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📦 3D Grid      ║   60  ║      287ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 📦 3D Grid      ║  140  ║      673ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🔷 Imperfect 3D ║   60  ║      275ms ⏱️   ║ ✅ Real Actor Model     ║
-║ 🔷 Imperfect 3D ║  140  ║      650ms ⏱️   ║ ✅ Real Actor Model     ║
+║ Full Network ║   60  ║      321ms    ║ Real Actor Model     ║
+║ Full Network ║   80  ║      380ms    ║ Real Actor Model     ║
+║ Full Network ║  100  ║      443ms    ║ Real Actor Model     ║
+║ Full Network ║  120  ║      525ms    ║ Real Actor Model     ║
+║ Full Network ║  140  ║      528ms    ║ Real Actor Model     ║
+║ Line Topology║   60  ║      181ms    ║ Real Actor Model     ║
+║ Line Topology║  140  ║      465ms    ║ Real Actor Model     ║
+║ 3D Grid      ║   60  ║      287ms    ║ Real Actor Model     ║
+║ 3D Grid      ║  140  ║      673ms    ║ Real Actor Model     ║
+║ Imperfect 3D ║   60  ║      275ms    ║ Real Actor Model     ║
+║ Imperfect 3D ║  140  ║      650ms    ║ Real Actor Model     ║
 ╚═════════════════╩═══════╩══════════════════╩═════════════════════════╝
 ```
 
-### **🏆 Key Findings from 40 Authentic Measurements**
+### **Key Findings from 40 Authentic Measurements**
 
-#### **💡 Performance Champion: Line Topology**
+#### **Performance Champion: Line Topology**
 - **Best Performance**: Line topology consistently outperforms all other topologies
 - **Push-Sum Line**: 112ms → 239ms (60-140 nodes)
 - **Gossip Line**: 181ms → 465ms (60-140 nodes)
 
-#### **⚡ Algorithm Efficiency**
+#### **Algorithm Efficiency**
 - **Push-Sum is ~2x faster** than Gossip across all topologies
 - More predictable convergence patterns
 - Better scalability characteristics
 
-#### **📊 Topology Performance Ranking (140 nodes)**
+#### **Topology Performance Ranking (140 nodes)**
 
 **Push-Sum Algorithm:**
-1. 📏 Line Topology: 239ms (🥇 Best)
-2. 🔷 Imperfect 3D: 262ms
-3. 🌐 Full Network: 266ms  
-4. 📦 3D Grid: 322ms
+1. Line Topology: 239ms (Best)
+2. Imperfect 3D: 262ms
+3. Full Network: 266ms  
+4. 3D Grid: 322ms
 
 **Gossip Algorithm:**
-1. 📏 Line Topology: 465ms (🥇 Best)
-2. 🌐 Full Network: 528ms
-3. 🔷 Imperfect 3D: 650ms
-4. 📦 3D Grid: 673ms
+1. Line Topology: 465ms (Best)
+2. Full Network: 528ms
+3. Imperfect 3D: 650ms
+4. 3D Grid: 673ms
 
-### **📈 Graph Visualizations**
+### **Graph Visualizations**
 
 ![Gossip Performance](authentic_gossip_40measurements.png)
 ![Push-Sum Performance](authentic_pushsum_40measurements.png)
@@ -109,10 +109,10 @@ Our Gleam implementation delivers **authentic distributed systems performance** 
 
 ### **Network Topologies**
 
-1. **🌐 Full Network**: Every node connected to every other node
-2. **📏 Line Topology**: Nodes arranged in a linear chain (best performance!)
-3. **📦 3D Grid**: Three-dimensional cubic grid structure
-4. **🔷 Imperfect 3D**: 3D grid with random missing connections
+1. **Full Network**: Every node connected to every other node
+2. **Line Topology**: Nodes arranged in a linear chain (best performance!)
+3. **3D Grid**: Three-dimensional cubic grid structure
+4. **Imperfect 3D**: 3D grid with random missing connections
 
 ## **Usage**
 
@@ -141,7 +141,7 @@ gleam run -m project2_gossip 60 line push-sum
 
 ## **Data Authenticity**
 
-### **✅ 100% Real Actor Model Implementation**
+### **100% Real Actor Model Implementation**
 
 - **Source**: Genuine Gleam/Erlang actor processes
 - **Environment**: BEAM virtual machine with authentic concurrency
@@ -150,7 +150,7 @@ gleam run -m project2_gossip 60 line push-sum
 - **Message Passing**: Asynchronous actor communication
 - **Termination Detection**: Distributed consensus
 
-### **📊 Complete Dataset**
+### **Complete Dataset**
 
 All 40 measurements available in:
 - `authentic_40_measurements.csv` - Raw data
@@ -175,14 +175,14 @@ project2_gossip/
 
 ## **Performance Insights**
 
-### **🎯 Major Findings**
+### **Major Findings**
 
 1. **Line Topology Dominance**: Contradicts typical distributed systems expectations
 2. **Algorithm Efficiency**: Push-Sum consistently outperforms Gossip
 3. **Scalability**: Linear to moderate exponential growth patterns
 4. **BEAM Performance**: Excellent sub-second convergence times
 
-### **🔍 Technical Observations**
+### **Technical Observations**
 
 - **Convergence Range**: 112ms - 673ms across all configurations
 - **Best Performance**: Line topology with Push-Sum (112ms at 60 nodes)
@@ -201,5 +201,5 @@ Academic project - distributed systems research implementation.
 
 ---
 
-**🎉 100% Authentic Actor Model Data**  
+**100% Authentic Actor Model Data**
 *All performance results from genuine Gleam/Erlang BEAM execution*
