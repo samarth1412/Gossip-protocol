@@ -30,7 +30,7 @@ The following Gleam packages are used in this project:
 
 ## Results: Convergence Time vs. Network Size
 
-For each algorithm, we plot the convergence time as a function of network size for all four topologies. Each graph overlays the four topologies for direct comparison. (Use logarithmic scales if needed for clarity.)
+For each algorithm, we plot the convergence time as a function of network size for all four topologies. Each graph overlays the four topologies for direct comparison. We collected 40 result sets and plotted the graph using a python script.
 
 ### Push-Sum Algorithm
 
