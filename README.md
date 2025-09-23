@@ -2,6 +2,12 @@
 
 This project implements and analyzes the convergence time of the **Gossip** and **Push-Sum** algorithms on various network topologies using the Gleam language.
 
+## Team Members
+
+- Samarth Vinayaka (UFID - 99665198)
+- Pulkit Garg (UFID - 31125456)
+
+
 ## Experimental Setup
 
 - **Algorithms:** Gossip, Push-Sum
@@ -109,7 +115,3 @@ gleam run -m project2_gossip 60 line push-sum
 - `<topology>`: `full`, `line`, `3D`, `imp3D`
 - `<algorithm>`: `gossip`, `push-sum`
 
-## Team Members
-
-- Samarth Vinayaka (UFID - 99665198)
-- Pulkit Garg (UFID - 31125456)
