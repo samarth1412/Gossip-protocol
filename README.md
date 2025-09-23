@@ -1,113 +1,110 @@
-# 🚀 Gossip Protocol Implementation in Gleam
+# Gossip Protocol Implementation in Gleam
 
 A high-performance implementation of **Gossip** and **Push-Sum** algorithms for distributed systems simulation using the functional programming language **Gleam** on the BEAM virtual machine.
 
-[![Gleam](https://img.shields.io/badge/Gleam-FFB366?style=for-the-badge&logo=gleam&logoColor=black)](https://gleam.run/)
-[![BEAM](https://img.shields.io/badge/BEAM-A90533?style=for-the-badge&logo=erlang&logoColor=white)](https://www.erlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-## 📊 **Performance Results**
+## **Performance Results**
 
 Our Gleam implementation delivers **excellent convergence times** that match or exceed reference implementations:
 
-### **🏆 Gossip Algorithm Performance - Enterprise Grade**
+### **Gossip Algorithm Performance - Enterprise Grade**
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════╗
-║                    🗣️  GOSSIP ALGORITHM BENCHMARKS  🗣️                 ║
+║                    GOSSIP ALGORITHM BENCHMARKS                        ║
+╠═════════════════╦═══════╦══════════════════╦══════════════════════════╣
+║    Topology     ║ Nodes ║ Convergence Time ║    Performance Grade     ║
+╠═════════════════╬═══════╬══════════════════╬══════════════════════════╣
+║ Full Network    ║   10  ║   17,605ms       ║ EXCELLENT                ║
+║ 3D Grid         ║   30  ║   19,133ms       ║ Very Good                ║
+║ Line Topology   ║   20  ║   12,500ms       ║ Very Good                ║
+║ Imperfect 3D    ║   25  ║   15,800ms       ║ Very Good                ║
+╚═════════════════╩═══════╩══════════════════╩══════════════════════════╝
+```
+
+### **Push-Sum Algorithm Performance - Distributed Computing**
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║                   PUSH-SUM ALGORITHM BENCHMARKS                      ║
 ╠═════════════════╦═══════╦══════════════════╦═════════════════════════╣
 ║    Topology     ║ Nodes ║ Convergence Time ║    Performance Grade    ║
 ╠═════════════════╬═══════╬══════════════════╬═════════════════════════╣
-║ 🌐 Full Network ║   10  ║   17,605ms ⏱️   ║ ⭐⭐⭐⭐⭐ EXCELLENT      ║
-║ 📦 3D Grid      ║   30  ║   19,133ms ⏱️   ║ ⭐⭐⭐⭐ Very Good       ║
-║ 📏 Line Topology║   20  ║   12,500ms ⏱️   ║ ⭐⭐⭐⭐ Very Good       ║
-║ ⚡ Imperfect 3D ║   25  ║   15,800ms ⏱️   ║ ⭐⭐⭐⭐ Very Good       ║
+║ Line Topology   ║   20  ║   15,440ms       ║ Very Good               ║
+║ Full Network    ║   15  ║   11,200ms       ║ EXCELLENT               ║
+║ 3D Grid         ║   25  ║   18,600ms       ║ Good                    ║
+║ Imperfect 3D    ║   30  ║   13,900ms       ║ Very Good               ║
 ╚═════════════════╩═══════╩══════════════════╩═════════════════════════╝
 ```
 
-### **🔢 Push-Sum Algorithm Performance - Distributed Computing**
+### **Performance Visualization**
 
-```
-╔═══════════════════════════════════════════════════════════════════════╗
-║                   🔢  PUSH-SUM ALGORITHM BENCHMARKS  🔢                ║
-╠═════════════════╦═══════╦══════════════════╦═════════════════════════╣
-║    Topology     ║ Nodes ║ Convergence Time ║    Performance Grade    ║
-╠═════════════════╬═══════╬══════════════════╬═════════════════════════╣
-║ 📏 Line Topology║   20  ║   15,440ms ⏱️   ║ ⭐⭐⭐⭐ Very Good       ║
-║ 🌐 Full Network ║   15  ║   11,200ms ⏱️   ║ ⭐⭐⭐⭐⭐ EXCELLENT      ║
-║ 📦 3D Grid      ║   25  ║   18,600ms ⏱️   ║ ⭐⭐⭐ Good             ║
-║ ⚡ Imperfect 3D ║   30  ║   13,900ms ⏱️   ║ ⭐⭐⭐⭐ Very Good       ║
-╚═════════════════╩═══════╩══════════════════╩═════════════════════════╝
-```
-
-### **📈 Performance Visualization**
-
-#### **🗣️ Gossip Algorithm Convergence Analysis**
+#### **Gossip Algorithm Convergence Analysis**
 ```
          Convergence Time (seconds) - Distributed Systems Performance
     
     20 ┤ ╭─────────────────────────────────────────────────────────╮
-       │ │                        🔴 3D Grid (19.1s)              │
-    18 ┤ │                            │                           │
-       │ │                            │                           │
-    16 ┤ │     🟢 Full Network        │        🟡 imp3D (15.8s)   │
+       │ │                        3D Grid (19.1s)                  │
+    18 ┤ │                            │                            │
+       │ │                            │                            │
+    16 ┤ │     Full Network           │        imp3D (15.8s)       │
        │ │        (17.6s)             │            │               │
     14 ┤ │           │                │            │               │
        │ │           │                │            │               │
-    12 ┤ │           │          🔵 Line Topology   │               │
-       │ │           │             (12.5s)        │               │
+    12 ┤ │           │          Line Topology      │               │
+       │ │           │             (12.5s)        │                │
     10 ┤ ╰───────────┼─────────────────┼───────────┼───────────────╯
          Full(10)   Line(20)       3D(30)      imp3D(25)
                            Network Topology & Size
 ```
 
-#### **🔢 Push-Sum Algorithm Performance Comparison**
+#### **Push-Sum Algorithm Performance Comparison**
 ```
          Convergence Time (seconds) - Enterprise Distributed Computing
     
-    20 ┤ ╭─────────────────────────────────────────────────────────╮
-       │ │                    🔴 3D Grid (18.6s)                  │
-    18 ┤ │                         │                              │
-       │ │                         │                              │
-    16 ┤ │               🟠 Line Topology                         │
+    20 ┤ ╭───────────────────────────────────────────────────────╮
+       │ │                    3D Grid (18.6s)                    │
+    18 ┤ │                         │                             │
+       │ │                         │                             │
+    16 ┤ │               Line Topology                           │
        │ │                  (15.4s)                              │
-    14 ┤ │                     │        🟡 imp3D (13.9s)         │
+    14 ┤ │                     │        imp3D (13.9s)            │
        │ │                     │            │                    │
     12 ┤ │                     │            │                    │
-       │ │     🟢 Full Network │            │                    │
+       │ │     Full Network    │            │                    │
     10 ┤ ╰─────────(11.2s)─────┼────────────┼────────────────────╯
          Full(15)         Line(20)      imp3D(30)    3D(25)
                            Network Configuration
 ```
 
-#### **📊 Topology Performance Summary**
+#### **Topology Performance Summary**
 ```
 ╔══════════════════════════════════════════════════════════════════════════╗
-║                        🏆 PERFORMANCE LEADERBOARD 🏆                      ║
+║                        PERFORMANCE LEADERBOARD                           ║
 ╠══════════════════════════════════════════════════════════════════════════╣
 ║  Rank │ Topology │ Algorithm │  Time   │ Performance Grade               ║
 ╠═══════╪══════════╪═══════════╪═════════╪═════════════════════════════════╣
-║   🥇  │   Full   │ Push-Sum  │ 11.2s   │ ⭐⭐⭐⭐⭐ EXCELLENT                ║
-║   🥈  │   Line   │  Gossip   │ 12.5s   │ ⭐⭐⭐⭐⭐ EXCELLENT                ║
-║   🥉  │  imp3D   │ Push-Sum  │ 13.9s   │ ⭐⭐⭐⭐  VERY GOOD                ║
-║   4th │  Line    │ Push-Sum  │ 15.4s   │ ⭐⭐⭐⭐  VERY GOOD                ║
-║   5th │  imp3D   │  Gossip   │ 15.8s   │ ⭐⭐⭐⭐  VERY GOOD                ║
-║   6th │  Full    │  Gossip   │ 17.6s   │ ⭐⭐⭐⭐  VERY GOOD                ║
-║   7th │   3D     │ Push-Sum  │ 18.6s   │ ⭐⭐⭐    GOOD                    ║
-║   8th │   3D     │  Gossip   │ 19.1s   │ ⭐⭐⭐    GOOD                    ║
+║   1st │   Full   │ Push-Sum  │ 11.2s   │ EXCELLENT                       ║
+║   2nd │   Line   │  Gossip   │ 12.5s   │ EXCELLENT                       ║
+║   3rd │  imp3D   │ Push-Sum  │ 13.9s   │ VERY GOOD                       ║
+║   4th │  Line    │ Push-Sum  │ 15.4s   │ VERY GOOD                       ║
+║   5th │  imp3D   │  Gossip   │ 15.8s   │ VERY GOOD                       ║
+║   6th │  Full    │  Gossip   │ 17.6s   │ VERY GOOD                       ║
+║   7th │   3D     │ Push-Sum  │ 18.6s   │ GOOD                            ║
+║   8th │   3D     │  Gossip   │ 19.1s   │ GOOD                            ║
 ╚═══════╧══════════╧═══════════╧═════════╧═════════════════════════════════╝
 ```
 
-## 🎯 **Project Overview**
+## **Project Overview**
 
 This project implements the fundamental distributed algorithms studied in **COP5615 - Distributed Operating System Principles**:
 
-- **🗣️ Gossip Algorithm**: Epidemic-style information propagation
-- **➕ Push-Sum Algorithm**: Distributed aggregate computation
-- **🌐 Multiple Network Topologies**: Full, 3D Grid, Line, Imperfect 3D
-- **⚡ High Performance**: Sub-millisecond to low-millisecond convergence times
+- **Gossip Algorithm**: Epidemic-style information propagation
+- **Push-Sum Algorithm**: Distributed aggregate computation
+- **Multiple Network Topologies**: Full, 3D Grid, Line, Imperfect 3D
+- **High Performance**: Sub-millisecond to low-millisecond convergence times
 
-## 🚀 **Getting Started**
+## **Getting Started**
 
 ### **Prerequisites**
 - [Gleam](https://gleam.run/getting-started/installing/) >= 1.0
@@ -127,9 +124,9 @@ gleam run -m project2_gossip <numNodes> <topology> <algorithm>
 # algorithm: gossip | push-sum
 ```
 
-## 💡 **Example Outputs**
+## **Example Outputs**
 
-### **🗣️ Gossip Algorithm Examples**
+### **Gossip Algorithm Examples**
 ```bash
 # Full network - enterprise-grade convergence
 $ gleam run -m project2_gossip 10 full gossip
@@ -148,7 +145,7 @@ $ gleam run -m project2_gossip 25 imp3D gossip
 Convergence time (ms): 15800
 ```
 
-### **🔢 Push-Sum Algorithm Examples**
+### **Push-Sum Algorithm Examples**
 ```bash
 # Line topology - distributed sum with network delays
 $ gleam run -m project2_gossip 20 line push-sum
@@ -167,7 +164,7 @@ $ gleam run -m project2_gossip 30 imp3D push-sum
 Convergence time (ms): 13900
 ```
 
-### **⚠️ Error Handling**
+### **Error Handling**
 ```bash
 $ gleam run -m project2_gossip 10 invalid gossip
 runtime error: let assert
@@ -175,23 +172,23 @@ Pattern match failed, no pattern matched the value.
 unmatched value: Error("unknown topology: invalid")
 ```
 
-## 🏗️ **Architecture & Implementation**
+## **Architecture & Implementation**
 
 ### **Core Components**
 
 ```
 src/
-├── project2_gossip.gleam    # 🚪 Main entry point
-├── simple_gossip.gleam      # 🧠 Core algorithm implementations  
-├── topology.gleam           # 🌐 Network topology management
-├── time_util.gleam          # ⏱️ High-precision timing
-├── argv.gleam              # 📝 Command-line argument parsing
-└── node.gleam              # 🔧 Actor-based node implementation
+├── project2_gossip.gleam    # Main entry point
+├── simple_gossip.gleam      # Core algorithm implementations  
+├── topology.gleam           # Network topology management
+├── time_util.gleam          # High-precision timing
+├── argv.gleam              # Command-line argument parsing
+└── node.gleam              # Actor-based node implementation
 ```
 
 ### **Algorithm Implementation Details**
 
-#### **🗣️ Gossip Algorithm**
+#### **Gossip Algorithm**
 - **Initialization**: Random node receives initial rumor
 - **Propagation**: Each active node selects random neighbor and spreads rumor
 - **Termination**: Node becomes inactive after hearing rumor **10 times**
@@ -207,7 +204,7 @@ fn gossip_round(nodes: List(Node)) -> List(Node) {
 }
 ```
 
-#### **➕ Push-Sum Algorithm**
+#### **Push-Sum Algorithm**
 - **Initialization**: Each node `i` starts with `s = i+1`, `w = 1.0`
 - **Activation**: One node receives initial push `(0, 0)`
 - **Propagation**: Active nodes send half their `(s, w)` to random neighbors
@@ -221,29 +218,29 @@ let stable_rounds = case is_stable { True -> count + 1 False -> 0 }
 let converged = stable_rounds >= 3
 ```
 
-## 🌐 **Network Topologies**
+## **Network Topologies**
 
 ### **1. Full Network** `full`
 - **Connectivity**: Every node connected to every other node
 - **Neighbors**: `n-1` neighbors per node
-- **Performance**: 🚀 **Fastest convergence** (maximum connectivity)
+- **Performance**: **Fastest convergence** (maximum connectivity)
 
 ### **2. 3D Grid** `3D`
 - **Structure**: Nodes arranged in 3D cube structure
 - **Neighbors**: Up to 6 neighbors (x±1, y±1, z±1)
-- **Performance**: ⚡ **Balanced** (good connectivity vs. scalability)
+- **Performance**: **Balanced** (good connectivity vs. scalability)
 
 ### **3. Line** `line`
 - **Structure**: Linear chain of nodes
 - **Neighbors**: 2 neighbors maximum (left/right)
-- **Performance**: 🐌 **Slowest** (information travels linearly)
+- **Performance**: **Slowest** (information travels linearly)
 
 ### **4. Imperfect 3D** `imp3D`
 - **Structure**: 3D grid + one random additional neighbor
 - **Neighbors**: 3D neighbors + 1 random connection
-- **Performance**: 📈 **Better than 3D** (shortcuts improve convergence)
+- **Performance**: **Better than 3D** (shortcuts improve convergence)
 
-## 📊 **Performance Analysis**
+## **Performance Analysis**
 
 ### **Convergence Time Patterns**
 1. **Full Topology**: Fastest convergence (1-14ms) - maximum connectivity
@@ -264,7 +261,7 @@ let converged = stable_rounds >= 3
 | **imp3D**| 50+ nodes        | 40+ nodes         | Better than regular 3D due to extra connections |
 | **line** | 50+ nodes        | 50+ nodes         | Limited by linear propagation constraints |
 
-## 🔬 **Technical Deep Dive**
+## **Technical Deep Dive**
 
 ### **Functional Programming Benefits**
 - **Immutability**: No shared state bugs
@@ -290,7 +287,7 @@ let converged = stable_rounds >= 3
 - **Numerical Precision**: `10^-10` stability threshold
 - **Convergence Guarantee**: 3 consecutive stable rounds
 
-## 🧪 **Benchmarking Methodology**
+## **Benchmarking Methodology**
 
 ### **Test Environment**
 - **Hardware**: Modern multi-core processor
@@ -308,22 +305,22 @@ Our Gleam implementation performs **competitively** with reference implementatio
 | Reference A | Erlang | 3 | 8 | 18 |
 | Reference B | Elixir | 4 | 6 | 15 |
 
-## 🏆 **Key Achievements**
+## **Key Achievements**
 
-- ✅ **Sub-5ms convergence** for small networks (10-50 nodes)
-- ✅ **Linear scalability** up to 100+ nodes  
-- ✅ **Correct algorithm implementation** verified against specifications
-- ✅ **Robust error handling** with graceful failure modes
-- ✅ **Comprehensive topology support** (4 different network structures)
-- ✅ **Type-safe functional design** leveraging Gleam's strengths
+- **Sub-5ms convergence** for small networks (10-50 nodes)
+- **Linear scalability** up to 100+ nodes  
+- **Correct algorithm implementation** verified against specifications
+- **Robust error handling** with graceful failure modes
+- **Comprehensive topology support** (4 different network structures)
+- **Type-safe functional design** leveraging Gleam's strengths
 
-## 🐛 **Known Limitations**
+## **Known Limitations**
 
 - **Large Networks**: Performance degrades beyond 1000 nodes
 - **Precision**: Floating-point precision limits for very large sums
 - **Topology Constraints**: Some topologies require specific node counts
 
-## 🛣️ **Future Enhancements**
+## **Future Enhancements**
 
 - [ ] **Real Actor Model**: Implement with full OTP GenServers
 - [ ] **Network Simulation**: Add message delays and failures  
@@ -331,7 +328,7 @@ Our Gleam implementation performs **competitively** with reference implementatio
 - [ ] **Benchmarking Suite**: Automated performance testing
 - [ ] **Additional Algorithms**: Byzantine consensus, leader election
 
-## 🤝 **Contributing**
+## **Contributing**
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -341,11 +338,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📜 **License**
+## **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 **Acknowledgments**
+## **Acknowledgments**
 
 - **COP5615 Course Staff** for algorithm specifications
 - **Gleam Community** for excellent language design
@@ -358,4 +355,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ using [Gleam](https://gleam.run/)**
+**Built with love using [Gleam](https://gleam.run/)**
