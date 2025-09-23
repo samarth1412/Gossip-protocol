@@ -1,0 +1,9 @@
+Algorithm,Topology,Nodes_60,Nodes_80,Nodes_100,Nodes_120,Nodes_140
+Gossip,Full,321,380,443,525,528
+Gossip,Line,181,259,335,388,465
+Gossip,3D,287,381,447,556,673
+Gossip,Imp3D,275,351,453,513,650
+Push-Sum,Full,123,166,194,236,266
+Push-Sum,Line,112,134,174,211,239
+Push-Sum,3D,131,176,203,247,322
+Push-Sum,Imp3D,127,167,212,235,262
