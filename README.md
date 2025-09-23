@@ -37,7 +37,7 @@ For each algorithm, we plot the convergence time as a function of network size f
 ![Gossip](PushSum_ss.png)
 
 - The Push-Sum algorithm demonstrates a clear trend of increasing   convergence time as the network size grows, but the rate of increase varies significantly across different topologies.
-- The line topology consistently achieves the fastest convergence, while the 3D grid and imperfect 3D topologies show noticeably higher convergence times, especially at larger network sizes.
+- The line topology consistently achieves the fastest convergence, while the 3D grid shows noticeably higher convergence times, especially at larger network sizes.
 - The full network topology performs well for smaller sizes but does not scale as efficiently as the line topology, highlighting the impact of network structure on distributed algorithm performance.
 
 ### Gossip Algorithm
@@ -46,7 +46,7 @@ For each algorithm, we plot the convergence time as a function of network size f
 
 - The convergence time for the Gossip algorithm rises sharply as the network size increases, indicating that scalability is a significant challenge for this protocol.
 - Among all topologies, the line topology consistently achieves the fastest convergence, while the 3D grid and imperfect 3D topologies show much slower convergence, especially at larger network sizes.
-- The full network topology starts with relatively low convergence times for small networks but does not maintain this advantage as the network grows, suggesting diminishing returns with increased connectivity.
+- The full network topology starts with relatively low convergence times for small networks but hits a threshold cap much earlier at higher node count as compared to other topologies.
 
 
 ## Largest Network Size Managed
